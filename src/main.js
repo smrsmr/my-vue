@@ -3,16 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
+import '@/assets/css/reset'
 import '@/assets/css/bootstrap'
-import '@/assets/css/base'
 import '@/assets/js/jquery-3.2.1.min'
 import '@/assets/js/bootstrap'
-Vue.config.productionTip = false
-
+Vue.config.productionTip = false;
+Vue.prototype.$http = axios;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
   components: { App }
-})
+});

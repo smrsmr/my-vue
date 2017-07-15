@@ -1,8 +1,10 @@
 # 全局安装 vue-cli
 $ cnpm install --global vue-cli
-# 创建一个基于 webpack 模板的新项目
+# 创建一个基于 webpack 模板的新项目 my-vue
 $ vue init webpack my-vue
-# 安装依赖，走你
+# 打开项目
 $ cd my-vue
+# 安装依赖包
 $ cnpm install
+# 运行 vue 项目
 $ cnpm run dev

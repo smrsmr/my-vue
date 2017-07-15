@@ -1,13 +1,22 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <HtmlCenter></HtmlCenter>
+    <HtmlFooter></HtmlFooter>
   </div>
 </template>
 
 <script>
+  import HtmlCenter from './components/center'
+  import HtmlFooter from './components/footer'
   export default {
-    name: 'app'
+    name: 'app',
+    components: {
+      HtmlCenter,
+      HtmlFooter
+    }
   }
+
 </script>
 
 <style>
