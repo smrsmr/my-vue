@@ -5,7 +5,7 @@
       <div class="nav-search">
         <form action="">
           <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-            <input type="text" class="form-control"  placeholder="">
+            <input type="text" class="form-control"  placeholder=" 电影、影人、影院、电视剧">
           </div>
           <div class="nav-submit">
             <input type="submit" class="btn btn-default" value="">
