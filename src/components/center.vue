@@ -5,12 +5,13 @@
   </div>
   <div class="center-img">
     <div>
-      <swiper :options="swiperOption"  ref="mySwiper" >
+      <swiper :options="swiperOption" >
         <!-- 这部分放你要渲染的那些内容 -->
         <swiper-slide v-for="item in msg">
-          <a v-bind:href="item.alt"><img v-bind:src="item.images.large" alt="图片"></a>
+          <a v-bind:href="item.alt" class="center-img-a"><img v-bind:src="item.images.large" alt="图片"></a>
         </swiper-slide>
         <!-- 这是轮播的小圆点 -->
+        <div class="swiper-pagination" slot="pagination"></div>
         <div class="swiper-button-prev" slot="button-prev"></div>
         <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
@@ -18,7 +19,8 @@
         <div class="center-large-ul">
           <ul>
             <li v-for="item in msg">
-              <a v-bind:href="item.alt"><img v-bind:src="item.images.medium" alt="图片"></a>
+              <a v-bind:href="item.alt" class="center-large-ul-a"><img v-bind:src="item.images.medium" alt="图片"></a>
+              <span class="center-large-sp">{{item.title}}</span>
             </li>
           </ul>
         </div>
@@ -38,42 +40,29 @@
       return {
         msg: '',
         swiperOption: {
-          //是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
-          notNextTick: true,
-          autoplay: 1000,
-          slidesPerView: 'auto',
-          centeredSlides: true,
           prevButton:'.swiper-button-prev',
           nextButton:'.swiper-button-next',
-//          spaceBetween: 30,
-          onSlideChangeEnd: swiper => {
-            //这个位置放swiper的回调方法
-            this.page = swiper.realIndex+1;
-            this.index = swiper.realIndex;
-          }
+          slidesPerView: 3,
+          spaceBetween: 0,
+          loop: true,
+          autoplay: 5000,
+          autoplayDisableOnInteraction: false,
+          pagination: '.swiper-pagination',
+          paginationType: 'fraction'
         }
       }
     },
     created: function () {
       var _this = this
-      let url = "/api/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=8";
+      let url = "/api/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=9";
       this.$http.get(url).then(res => {
         console.log(res.data)
         _this.msg = res.data.subjects
       }, res => {
         console.log(res)
       })
-    },
-    //定义这个sweiper对象
-    computed: {
-      swiper() {
-        return this.$refs.mySwiper.swiper;
-      }
-    },
-    mounted () {
-      //这边就可以使用swiper这个对象去使用swiper官网中的那些方法
-      this.swiper.slideTo(0, 0, false);
     }
+
   }
 </script>
 
@@ -100,10 +89,25 @@
   .center-large-ul {
     flex: 1;
   }
+  .center-img-a img {
+    width: 300px;
+    height: 425px;
+  }
   .center-large-ul ul {
     display: flex;
     justify-content: space-between;
     flex-flow: row wrap;
     align-items: center;
+  }
+  .center-large-ul ul li {
+    position: relative;
+  }
+  .center-large-sp {
+    position: absolute;
+    left: 0;
+  }
+  .center-large-ul-a img {
+    width: 100px;
+    height: 142px;
   }
 </style>
