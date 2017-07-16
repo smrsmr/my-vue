@@ -8,3 +8,6 @@ $ cd my-vue
 $ cnpm install
 # 运行 vue 项目
 $ cnpm run dev
+
+#swiper 轮播图组件
+$ cnpm install vue-awesome-swiper --save
