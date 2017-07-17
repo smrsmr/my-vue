@@ -7,7 +7,7 @@ import router from './router'
 import axios from 'axios'
 import '@/assets/css/reset'
 import '@/assets/css/bootstrap'
-import '@/assets/js/jquery-3.2.1.min'
+import $ from 'jquery'
 import '@/assets/js/bootstrap'
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;

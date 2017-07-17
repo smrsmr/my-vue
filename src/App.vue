@@ -1,19 +1,25 @@
 <template>
   <div id="app">
+    <HtmlNav></HtmlNav>
     <router-view></router-view>
-    <HtmlCenter></HtmlCenter>
-    <HtmlFooter></HtmlFooter>
+    <!--<HtmlFooter></HtmlFooter>-->
   </div>
 </template>
 
 <script>
   import HtmlCenter from './components/center'
   import HtmlFooter from './components/footer'
+  import HtmlNav from './components/nav'
   export default {
     name: 'app',
     components: {
       HtmlCenter,
-      HtmlFooter
+      HtmlFooter,
+      HtmlNav
+    },
+    created: function () {
+      this.$router.push({path: '/home'})
+
     }
   }
 

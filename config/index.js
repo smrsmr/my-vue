@@ -31,6 +31,7 @@ module.exports = {
       '/api':{
         target:'https://api.douban.com/v2/movie',
         changeOrigin: true,
+        secure: false,
         pathRewrite:{
           '^/api':''
         }

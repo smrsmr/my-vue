@@ -27,6 +27,8 @@
       </div>
     </div>
   </div>
+
+
 </div>
 </template>
 <script>
@@ -56,7 +58,7 @@
       var _this = this
       let url = "/api/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=9";
       this.$http.get(url).then(res => {
-        console.log(res.data)
+        console.log(res)
         _this.msg = res.data.subjects
       }, res => {
         console.log(res)
