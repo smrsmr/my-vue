@@ -1,7 +1,7 @@
 <template>
 <div id="app" class="container">
   <div class="center-head pull-left">
-    <span>正在热映</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">全部正在热映>></a> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">即将上映>></a> </span>
+    <span>正在热映</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><router-link to="fever-movie">全部正在热映>></router-link> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">即将上映>></a> </span>
   </div>
   <div class="center-img">
     <div>

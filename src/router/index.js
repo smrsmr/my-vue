@@ -9,7 +9,8 @@ import Classify from '@/components/head/classify'
 import Inception from '@/components/head/Inception'
 import Crunchies from '@/components/head/Crunchies'
 import report from '@/components/head/report'
-import HtmlNav from '@/components/nav'
+import feverMovie from '@/components/view/fever-movie'
+// import HtmlNav from '@/components/nav'
 Vue.use(Router)
 
 export default new Router({
@@ -50,6 +51,10 @@ export default new Router({
     {
       path: '/report',
       component: report
+    },
+    {
+      path: '/fever-movie',
+      component: feverMovie
     }
   ]
 })

@@ -11,3 +11,5 @@ $ cnpm run dev
 
 #swiper 轮播图组件
 $ cnpm install vue-awesome-swiper --save
+#安装jquery
+$ cnpm install jquery -D
