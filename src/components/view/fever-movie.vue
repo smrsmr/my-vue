@@ -8,7 +8,9 @@
          </div>
          <div class="fever-title">
            <h3 class="pull-left"> <a v-bind:href="item.alt">{{item.title}}</a></h3>
+           <h5 class="pull-left">时间（地区）：{{item.pubdates[0]}}</h5>
            <h5 class="pull-left">评分：{{item.rating.average}}分</h5>
+           <star :score="item.rating.average" class="pull-left clear"></star>
            <h5 class="pull-left">导演：{{item.directors[0].name}}</h5>
            <h5 class="pull-left">主演：{{item.casts[0].name}}</h5>
          </div>
@@ -18,15 +20,19 @@
 </template>
 
 <script>
+  import star from '../star/star'
   export default {
     data () {
       return {
-        msg: '',
+        msg: ''
       }
+    },
+    components: {
+      star: star
     },
     created: function () {
       var _this = this
-      let url = "/api/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=25";
+      let url = "/api/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=30";
       this.$http.get(url).then(res => {
         console.log(res.data)
         _this.msg = res.data.subjects

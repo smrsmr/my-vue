@@ -5,11 +5,11 @@
     <div class="container">
     <div v-if='!guodu' class="res-theaters-area">
       <div class="res-movies-wrap" >
-        <div class="res-movies-show" v-for="(item, index) in search_result.subjects">
+        <div class="res-movies-show" v-for="(item, index) in search_result.subjects" @click="serch(item.id)">
           <div class="res-movies-show-child">
-            <div><img :src="item.images.medium"></div>
+            <div><img :src="item.images.medium" :alt="item.alt"></div>
             <div class="res-movieMsg">
-              <h2 class="pull-left"><a v-bind:href="item.alt" >{{item.title}}</a> </h2>
+              <h2 class="pull-left">{{item.title}}</h2>
               <p class="pull-left">评分：{{item.rating.average}}分  ({{item.collect_count}}评价)</p>
               <star :score="item.rating.average" class="pull-left clear"></star>
               <p class="pull-left">上映日期：{{item.year}}年</p>
@@ -73,6 +73,12 @@
       }, res => {
         console.log(res);
       })
+    },
+    methods: {
+      serch: function (str) {
+        const path = '/movie/' + str
+        this.$router.push({path: path})
+      }
     }
   }
 </script>
@@ -112,13 +118,6 @@
   }
   .res-movieMsg p {
     clear: both;
-  }
-  .clear {
-    clear: both;
-  }
-  .res-movieMsg a:hover {
-    text-decoration: none;
-    background-color: deepskyblue;
   }
   .res-movies-show p {
     font-size: 14px;

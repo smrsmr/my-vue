@@ -7,8 +7,8 @@
     <div>
       <swiper :options="swiperOption" >
         <!-- 这部分放你要渲染的那些内容 -->
-        <swiper-slide v-for="item in msg">
-          <a v-bind:href="item.alt" class="center-img-a"><img v-bind:src="item.images.large" alt="图片"></a>
+        <swiper-slide v-for="item in msg" >
+          <a  class="center-img-a" @click="serch(item.id)"><img v-bind:src="item.images.large" :alt="item.alt"></a>
         </swiper-slide>
         <!-- 这是轮播的小圆点 -->
         <div class="swiper-pagination" slot="pagination"></div>
@@ -18,8 +18,8 @@
       <div class="center-large">
         <div class="center-large-ul">
           <ul>
-            <li v-for="item in msg">
-              <a v-bind:href="item.alt" class="center-large-ul-a"><img v-bind:src="item.images.medium" alt="图片"></a>
+            <li v-for="item in msg" @click="serch(item.id)">
+              <a  class="center-large-ul-a"><img v-bind:src="item.images.medium" :alt="item.alt"></a>
               <span class="center-large-sp">{{item.title}}</span>
             </li>
           </ul>
@@ -63,6 +63,12 @@
       }, res => {
         console.log(res)
       })
+    },
+    methods: {
+      serch: function (str) {
+        const path = '/movie/' + str
+        this.$router.push({path: path})
+      }
     }
 
   }
@@ -89,7 +95,11 @@
     align-items: center;
   }
   .center-large-ul {
+    cursor: pointer;
     flex: 1;
+  }
+  .center-img-a {
+    cursor: pointer;
   }
   .center-img-a img {
     width: 300px;

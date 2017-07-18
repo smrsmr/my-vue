@@ -12,7 +12,7 @@
   export default {
     props: {
       score: {
-        type: Number
+        type: null
       }
     },
     computed: {

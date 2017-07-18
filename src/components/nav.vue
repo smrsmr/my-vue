@@ -1,7 +1,7 @@
 <template>
   <div class="nav-head" >
     <nav class="container">
-      <router-link to="home"> <div class="nav-logo"></div></router-link>
+      <router-link to="/home"> <div class="nav-logo"></div></router-link>
       <div class="nav-search">
           <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12" >
             <input type="text" class="form-control"  placeholder=" 电影、影人、影院、电视剧" v-model="query" @click="clearText" @keyup.enter="serch()">
@@ -15,11 +15,11 @@
     <div class="container nav-ul">
       <div class="nav-movie">
         <ul>
-          <li><router-link to="fever-movie">影讯&购票</router-link> </li>
-          <li><router-link to="ranking-list">排行榜</router-link> </li>
-          <li><router-link to="publicPraise">口碑榜</router-link> </li>
-          <li><router-link to="Crunchies">Top 250</router-link> </li>
-          <li><router-link to="report">北美票房榜</router-link> </li>
+          <li><router-link to="/fever-movie">影讯&购票</router-link> </li>
+          <li><router-link to="/ranking-list">排行榜</router-link> </li>
+          <li><router-link to="/publicPraise">口碑榜</router-link> </li>
+          <li><router-link to="/Crunchies">Top 250</router-link> </li>
+          <li><router-link to="/report">北美票房榜</router-link> </li>
         </ul>
       </div>
     </div>
@@ -29,7 +29,6 @@
 
 <script>
   export default {
-    name: 'hello',
     data () {
       return {
         msg: '',

@@ -8,7 +8,9 @@
         </div>
         <div class="fever-title">
           <h3 class="pull-left"><a v-bind:href="item.subject.alt" >{{item.subject.title}}</a> </h3>
-          <h5 class="pull-left">时间（地区）：{{item.subject.pubdates[0]}} / {{item.subject.pubdates[1]}}</h5>
+          <h5 class="pull-left">时间（地区）：{{item.subject.pubdates[0]}}</h5>
+          <h5 class="pull-left">评分：{{item.subject.rating.average}}分</h5>
+          <star :score="item.subject.rating.average" class="pull-left clear"></star>
           <h5 class="pull-left">导演：{{item.subject.directors[0].name}}</h5>
           <h5 class="pull-left">主演：{{item.subject.casts[0].name}} / {{item.subject.casts[1].name}} / {{item.subject.casts[2].name}}</h5>
         </div>
@@ -18,12 +20,16 @@
 </template>
 
 <script>
+  import star from '../star/star'
   export default {
     data () {
       return {
         msg: '',
         newdate: ''
       }
+    },
+    components: {
+      star: star
     },
     created: function () {
       var _this = this
