@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-    <h2 class="pull-left">北美票房榜 {{newdate}}</h2>
+    <h2 class="pull-left">本周口碑榜</h2>
     <div class="fever-d">
       <div class="fever-d-img" v-for="item in msg">
         <div class="fever-img">
@@ -10,7 +10,8 @@
           <h3 class="pull-left"><a v-bind:href="item.subject.alt" >{{item.subject.title}}</a> </h3>
           <h5 class="pull-left">时间（地区）：{{item.subject.pubdates[0]}} / {{item.subject.pubdates[1]}}</h5>
           <h5 class="pull-left">导演：{{item.subject.directors[0].name}}</h5>
-          <h5 class="pull-left">主演：{{item.subject.casts[0].name}} / {{item.subject.casts[1].name}} / {{item.subject.casts[2].name}}</h5>
+          <h5 class="pull-left">评分：{{item.subject.rating.average}}分</h5>
+          <h5 class="pull-left">类型：{{item.subject.genres[0]}}  {{item.subject.genres[1]}}  {{item.subject.genres[2]}}</h5>
         </div>
       </div>
     </div>
@@ -22,16 +23,14 @@
     data () {
       return {
         msg: '',
-        newdate: ''
       }
     },
     created: function () {
       var _this = this
-      let url = "/api/us_box?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=30";
+      let url = "/api/weekly?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=10";
       this.$http.get(url).then(res => {
-        console.log(res.data)
+        console.log(res.data);
         _this.msg = res.data.subjects;
-        _this.newdate = res.data.date;
       }, res => {
         console.log(res)
       })

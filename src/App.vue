@@ -2,7 +2,6 @@
   <div id="app">
     <HtmlNav></HtmlNav>
     <router-view></router-view>
-    <!--<HtmlFooter></HtmlFooter>-->
   </div>
 </template>
 

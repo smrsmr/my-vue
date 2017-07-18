@@ -2,13 +2,13 @@
  <div id="app" class="container">
    <h2 class="pull-left">电影票-广州</h2>
    <div class="fever-d">
-       <div class="fever-d-img" v-for="(item,index) in msg">
+       <div class="fever-d-img" v-for="item in msg">
          <div class="fever-img">
-           <a v-bind:href="item.alt"><img v-bind:src="item.images.medium" alt="图片"></a>
+          <img v-bind:src="item.images.medium" alt="图片">
          </div>
          <div class="fever-title">
-           <h3 class="pull-left">{{item.title}}</h3>
-           <h5 class="pull-left">{{item.rating.average}}分</h5>
+           <h3 class="pull-left"> <a v-bind:href="item.alt">{{item.title}}</a></h3>
+           <h5 class="pull-left">评分：{{item.rating.average}}分</h5>
            <h5 class="pull-left">导演：{{item.directors[0].name}}</h5>
            <h5 class="pull-left">主演：{{item.casts[0].name}}</h5>
          </div>
@@ -56,6 +56,10 @@
   }
   .fever-title {
     margin-left: 4%;
+  }
+  .fever-title a:hover {
+    text-decoration: none;
+    background-color: deepskyblue;
   }
   .fever-title h5 {
     clear: both;

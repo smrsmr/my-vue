@@ -5,6 +5,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import spinner from './components/spinner/spinner.vue'
 import '@/assets/css/reset'
 import '@/assets/css/bootstrap'
 import $ from 'jquery'
@@ -17,5 +18,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: { App , spinner}
 });

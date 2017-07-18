@@ -1,15 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/center'
-import FilmBoy from '@/components/head/FilmBoy'
-import Movie from '@/components/head/movie'
-import Teleplay from '@/components/head/teleplay'
 import Ranking from '@/components/head/ranking-list'
-import Classify from '@/components/head/classify'
-import Inception from '@/components/head/Inception'
+import publicPraise from '@/components/head/publicPraise'
 import Crunchies from '@/components/head/Crunchies'
 import report from '@/components/head/report'
 import feverMovie from '@/components/view/fever-movie'
+import serchResult from '@/components/serchResult'
 // import HtmlNav from '@/components/nav'
 Vue.use(Router)
 
@@ -21,28 +18,12 @@ export default new Router({
       component: Home
     },
     {
-      path: '/FilmBoy',
-      component: FilmBoy
-    },
-    {
-      path: '/movie',
-      component: Movie
-    },
-    {
-      path: '/teleplay',
-      component: Teleplay
-    },
-    {
       path: '/ranking-list',
       component: Ranking
     },
     {
-      path: '/classify',
-      component: Classify
-    },
-    {
-      path: '/Inception',
-      component: Inception
+      path: '/publicPraise',
+      component: publicPraise
     },
     {
       path: '/Crunchies',
@@ -51,6 +32,10 @@ export default new Router({
     {
       path: '/report',
       component: report
+    },
+    {
+      path: '/serchResult',
+      component: serchResult
     },
     {
       path: '/fever-movie',

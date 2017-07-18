@@ -3,28 +3,23 @@
     <nav class="container">
       <router-link to="home"> <div class="nav-logo"></div></router-link>
       <div class="nav-search">
-        <form action="">
           <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-            <input type="text" class="form-control"  placeholder=" 电影、影人、影院、电视剧">
+            <input type="text" class="form-control"  placeholder=" 电影、影人、影院、电视剧" v-model="query" @click="clearText" @keyup.enter="serch()">
           </div>
-          <div class="nav-submit">
-            <input type="submit" class="btn btn-default" value="">
+          <div class="nav-submit" @click="serch">
+            <input type="button" class="btn btn-default" value="">
           </div>
-        </form>
       </div>
     </nav>
     <hr>
     <div class="container nav-ul">
       <div class="nav-movie">
         <ul>
-          <li><router-link to="FilmBoy">影讯&购票</router-link> </li>
-          <li><router-link to="movie">选电影</router-link> </li>
-          <li><router-link to="teleplay">电视剧</router-link> </li>
+          <li><router-link to="fever-movie">影讯&购票</router-link> </li>
           <li><router-link to="ranking-list">排行榜</router-link> </li>
-          <li><router-link to="classify">分类</router-link> </li>
-          <li><router-link to="Inception">影评</router-link> </li>
-          <li><router-link to="Crunchies">2016年度榜单</router-link> </li>
-          <li><router-link to="report">2016观影报告</router-link> </li>
+          <li><router-link to="publicPraise">口碑榜</router-link> </li>
+          <li><router-link to="Crunchies">Top 250</router-link> </li>
+          <li><router-link to="report">北美票房榜</router-link> </li>
         </ul>
       </div>
     </div>
@@ -37,7 +32,17 @@
     name: 'hello',
     data () {
       return {
-        msg: ''
+        msg: '',
+        query: '',
+      }
+    },
+    methods: {
+      serch: function () {
+        this.$router.push({path: '/serchResult', query:{ name: this.query }})
+        this.query = ''
+      },
+      clearText: function () {
+        this.$router.push({path: '/home'})
       }
     }
   }
@@ -83,6 +88,7 @@
     justify-content: space-between;
     flex-flow: row;
     align-items: center;
+    font-size: 18px;
   }
   .nav-movie ul li a:hover {
     text-decoration: none;
