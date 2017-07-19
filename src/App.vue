@@ -17,7 +17,7 @@
       HtmlNav
     },
     created: function () {
-      this.$router.push({path: '/home'})
+      this.$router.push({path: '/'})
 
     }
   }

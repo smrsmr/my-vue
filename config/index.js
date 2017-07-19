@@ -44,6 +44,4 @@ module.exports = {
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
   },
-  NODE_ENV: '"production"',//生产环境
-  API_HOST:'"https://api.douban.com/v2/movie"'
 }

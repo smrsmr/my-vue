@@ -1,7 +1,7 @@
 <template>
   <div class="nav-head" >
     <nav class="container">
-      <router-link to="/home"> <div class="nav-logo"></div></router-link>
+      <router-link to="/"> <div class="nav-logo"></div></router-link>
       <div class="nav-search">
           <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12" >
             <input type="text" class="form-control"  placeholder=" 电影、影人、影院、电视剧" v-model="query" @click="clearText" @keyup.enter="serch()">
@@ -41,7 +41,7 @@
         this.query = ''
       },
       clearText: function () {
-        this.$router.push({path: '/home'})
+        this.$router.push({path: '/'})
       }
     }
   }

@@ -12,10 +12,10 @@ import coming from '@/components/view/coming-soon'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
-      path: '/home',
+      path: '/',
       component: Home
     },
     {
