@@ -2,7 +2,7 @@
  <div id="app" class="container">
    <spinner v-if="bool"></spinner>
    <div v-if="!bool">
-     <h2>电影票-广州</h2>
+     <h2>即将上映的电影</h2>
      <div class="fever-d">
        <div class="fever-d-img" v-for="item in msg" @click="serch(item.id)">
          <div class="fever-img">
@@ -14,7 +14,7 @@
            <h5 class="pull-left">评分：{{item.rating.average}}分</h5>
            <star :score="item.rating.average" class="pull-left clear"></star>
            <h5 class="pull-left">导演：{{item.directors[0].name}}</h5>
-           <h5 class="pull-left">主演：{{item.casts[0].name}}</h5>
+           <h5 class="pull-left">剧情：{{item.genres[1]}} {{item.genres[2]}}</h5>
          </div>
        </div>
      </div>
@@ -29,7 +29,7 @@
     data () {
       return {
         msg: '',
-        bool: true
+        bool: true,
       }
     },
     components: {
@@ -38,9 +38,9 @@
     },
     created: function () {
       var _this = this
-      let url = "/api/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=30";
+      let url = "/api/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=30";
       this.$http.get(url).then(res => {
-        console.log(res.data)
+        console.log(res.data.subjects)
         this.bool = false
         _this.msg = res.data.subjects
       }, res => {

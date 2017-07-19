@@ -10,7 +10,7 @@
           </div>
           <div class="fever-title">
             <h3 class="pull-left"><a>{{item.title}}</a> </h3>
-            <h5 class="pull-left">时间（地区）：{{item.pubdates[0]}}</h5>
+            <h5 class="pull-left">时间（地区）：{{item.pubdates[0]}} <span v-if="item.pubdates[1]"> / </span>{{item.pubdates[1]}}</h5>
             <h5 class="pull-left">评分：{{item.rating.average}}分</h5>
             <star :score="item.rating.average" class="pull-left clear"></star>
             <h5 class="pull-left">导演：{{item.directors[0].name}}</h5>

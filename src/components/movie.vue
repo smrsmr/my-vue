@@ -11,8 +11,8 @@
               <h6 class="pull-left">导演：{{search_result.directors[0].name}}</h6>
               <h6 class="pull-left">评分：{{search_result.rating.average}}分  ({{search_result.collect_count}}评价)</h6>
               <star :score="search_result.rating.average" class="pull-left clear"></star>
-              <h6 class="pull-left">上映日期：{{search_result.pubdates[0]}}</h6>
-              <h6 class="pull-left">上映日期：{{search_result.durations[0]}}</h6>
+              <h6 class="pull-left">上映日期：{{search_result.pubdates[0]}} <span v-if="search_result.pubdates[1]"> / </span>{{search_result.pubdates[1]}}</h6>
+              <h6 class="pull-left">时长：{{search_result.durations[0]}}</h6>
               <h6 class="pull-left">影片类型：{{search_result.genres[0]}} {{search_result.genres[1]}} {{search_result.genres[2]}}</h6>
             </div>
           </div>

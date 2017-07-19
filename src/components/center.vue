@@ -3,7 +3,7 @@
   <spinner v-if="bool"></spinner>
   <div v-if="!bool">
     <div class="center-head pull-left">
-      <span>正在热映</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><router-link to="fever-movie">全部正在热映>></router-link> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">即将上映>></a> </span>
+      <span>正在热映</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><router-link to="fever-movie">全部正在热映>></router-link> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><router-link to="/coming"> 即将上映>></router-link></span>
     </div>
     <div class="center-img">
       <div>

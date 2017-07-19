@@ -8,7 +8,7 @@ import report from '@/components/head/report'
 import feverMovie from '@/components/view/fever-movie'
 import serchResult from '@/components/serchResult'
 import movie from '@/components/movie'
-// import HtmlNav from '@/components/nav'
+import coming from '@/components/view/coming-soon'
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +25,10 @@ export default new Router({
     {
       path: '/publicPraise',
       component: publicPraise
+    },
+    {
+      path: '/coming',
+      component: coming
     },
     {
       path: '/Crunchies',
