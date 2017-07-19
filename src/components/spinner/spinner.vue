@@ -1,5 +1,7 @@
 <template>
   <div class="spinner">
+    <h4>加载中。。。。。。</h4>
+    <h6>(如果等待时间过长，请重新刷新页面)</h6>
     <div class="rect1"></div>
     <div class="rect2"></div>
     <div class="rect3"></div>
@@ -10,20 +12,28 @@
 
 <script>
   export default {
+      data () {
+          return {
+              num: 0
+          }
+      },
+    computed: {
+
+    }
   }
 </script>
 
 <style>
   .spinner {
-    margin: 100px auto;
-    width: 50px;
-    height: 60px;
+    margin: 200px auto;
+    width: 300px;
+    height: 80px;
     text-align: center;
     font-size: 10px;
   }
 
   .spinner > div {
-    background-color: #df2d2d;
+    background-color: deepskyblue;
     height: 100%;
     width: 6px;
     display: inline-block;
@@ -62,8 +72,8 @@
       transform: scaleY(0.4);
       -webkit-transform: scaleY(0.4);
     }  20% {
-         transform: scaleY(1.0);
-         -webkit-transform: scaleY(1.0);
-       }
+      transform: scaleY(1.0);
+      -webkit-transform: scaleY(1.0);
+    }
   }
 </style>

@@ -1,35 +1,39 @@
 <template>
   <div class="result">
-    <spinner v-if='guodu'></spinner>
-    <h2 v-if='!guodu' class="search-title">'{{val}}'的搜索结果, 共{{search_result.total}}条信息</h2>
-    <div class="container">
-    <div v-if='!guodu' class="res-theaters-area">
-      <div class="res-movies-wrap" >
-        <div class="res-movies-show" v-for="(item, index) in search_result.subjects" @click="serch(item.id)">
-          <div class="res-movies-show-child">
-            <div><img :src="item.images.medium" :alt="item.alt"></div>
-            <div class="res-movieMsg">
-              <h2 class="pull-left">{{item.title}}</h2>
-              <p class="pull-left">评分：{{item.rating.average}}分  ({{item.collect_count}}评价)</p>
-              <star :score="item.rating.average" class="pull-left clear"></star>
-              <p class="pull-left">上映日期：{{item.year}}年</p>
-              <p class="pull-left">影片类型：{{item.genres[0]}} {{item.genres[1]}} {{item.genres[2]}}</p>
+    <spinner v-if='bool'></spinner>
+    <div v-if="!bool">
+      <h2 v-if='!guodu' class="search-title">'{{val}}'的搜索结果, 共{{search_result.total}}条信息</h2>
+      <div class="container">
+        <div v-if='!guodu' class="res-theaters-area">
+          <div class="res-movies-wrap" >
+            <div class="res-movies-show" v-for="(item, index) in search_result.subjects" @click="serch(item.id)">
+              <div class="res-movies-show-child">
+                <div><img :src="item.images.medium" :alt="item.alt"></div>
+                <div class="res-movieMsg">
+                  <h2 class="pull-left">{{item.title}}</h2>
+                  <p class="pull-left">评分：{{item.rating.average}}分  ({{item.collect_count}}评价)</p>
+                  <star :score="item.rating.average" class="pull-left clear"></star>
+                  <p class="pull-left">上映日期：{{item.year}}年</p>
+                  <p class="pull-left">影片类型：{{item.genres[0]}} {{item.genres[1]}} {{item.genres[2]}}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
 </template>
 
 <script>
   import star from './star/star'
+  import spinner from './spinner/spinner'
   export default {
     data () {
       return {
         val: '',
         guodu: '',
+        bool: true,
         search_result: {
           total: '',
           subjects: [{
@@ -60,7 +64,8 @@
       }
     },
     components: {
-      star: star
+      star: star,
+      spinner: spinner
     },
     created: function () {
       this.val = this.$route.query.name;
@@ -69,6 +74,7 @@
       this.$http.get(url).then(res => {
         console.log(res.data);
         _this.guodu = false
+        this.bool = false
         _this.search_result = res.data
       }, res => {
         console.log(res);
