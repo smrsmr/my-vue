@@ -3,7 +3,7 @@
   <spinner v-if="bool"></spinner>
   <div v-if="!bool">
     <div class="center-head pull-left">
-      <span>正在热映</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><router-link to="fever-movie">全部正在热映>></router-link> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><router-link to="/coming"> 即将上映>></router-link></span>
+      <span>正在热映</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><router-link to="feverMovie">全部正在热映>></router-link> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><router-link to="/coming"> 即将上映>></router-link></span>
     </div>
     <div class="center-img">
       <div>
@@ -61,15 +61,17 @@
       }
     },
     created: function () {
-      var _this = this
-      let url = "/api/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=9";
-      this.$http.get(url).then(res => {
-        console.log(res)
-        this.bool = false
-        _this.msg = res.data.subjects
-      }, res => {
-        console.log(res)
-      })
+      var _this = this;
+      let url = "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=9";
+      this.$http.jsonp(url)
+        .then(function (res) {
+          console.log(res.data)
+          this.bool = false;
+          _this.msg = res.data.subjects
+        })
+        .catch(function (res) {
+          console.log(res)
+        })
     },
     methods: {
       serch: function (str) {
@@ -118,15 +120,14 @@
     flex-flow: row wrap;
     align-items: center;
   }
-  .center-large-ul ul li {
-    position: relative;
-  }
   .center-large-sp {
-    position: absolute;
-    left: 0;
+
+    display: flex;
+    flex-flow: wrap;
   }
   .center-large-ul-a img {
     width: 100px;
     height: 142px;
+    /*margin-bottom: 18px;*/
   }
 </style>

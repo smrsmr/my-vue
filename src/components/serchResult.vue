@@ -68,22 +68,27 @@
       spinner: spinner
     },
     created: function () {
-      this.val = this.$route.query.name;
-      var _this = this;
-      let url = "/api/search?q="+this.val;
-      this.$http.get(url).then(res => {
-        console.log(res.data);
-        _this.guodu = false
-        this.bool = false
-        _this.search_result = res.data
-      }, res => {
-        console.log(res);
-      })
+      this.movice()
     },
     methods: {
       serch: function (str) {
         const path = '/movie/' + str
         this.$router.push({path: path})
+      },
+      movice: function () {
+        this.val = this.$route.query.name;
+        var _this = this;
+        let url = "https://api.douban.com/v2/movie/search?q="+this.val;
+        this.$http.jsonp(url)
+          .then(function (res) {
+            console.log(res.data)
+            this.bool = false;
+            _this.guodu = false;
+            _this.search_result = res.data
+          })
+          .catch(function (res) {
+            console.log(res)
+          })
       }
     }
   }

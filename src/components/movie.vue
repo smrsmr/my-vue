@@ -175,16 +175,23 @@
       spinner: spinner
     },
     created: function () {
-      this.val = this.$route.query.name;
-      var _this = this;
-      let url = "/api/subject/"+this.$route.params.id +'?apikey=0b2bdeda43b5688921839c8ecb20399b&city="广州"';
-      this.$http.get(url).then(res => {
-        console.log(res.data);
-        _this.search_result = res.data
-        this.bool = false
-      }, res => {
-        console.log(res);
-      })
+      this.movie()
+    },
+    methods: {
+      movie: function () {
+        this.val = this.$route.query.name;
+        var _this = this;
+        let url = "https://api.douban.com/v2/movie/subject/"+this.$route.params.id +'?apikey=0b2bdeda43b5688921839c8ecb20399b&city="广州"';
+        this.$http.jsonp(url)
+          .then(function (res) {
+            console.log(res.data)
+            this.bool = false;
+            _this.search_result = res.data
+          })
+          .catch(function (res) {
+            console.log(res)
+          })
+      }
     }
   }
 </script>

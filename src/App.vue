@@ -18,7 +18,6 @@
     },
     created: function () {
       this.$router.push({path: '/'})
-
     }
   }
 

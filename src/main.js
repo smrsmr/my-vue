@@ -4,19 +4,22 @@ import Vue from 'vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import App from './App'
 import router from './router'
-import axios from 'axios'
 import spinner from './components/spinner/spinner'
-import '@/assets/css/reset'
-import '@/assets/css/bootstrap'
+import '../static/css/reset'
+import '../static/css/bootstrap'
 import $ from 'jquery'
-import '@/assets/js/bootstrap'
+import '../static/js/bootstrap'
 Vue.config.productionTip = false;
-Vue.prototype.$http = axios;
 Vue.use(VueAwesomeSwiper);
+
+import VueResource from 'vue-resource';
+Vue.prototype.router = router;
+Vue.use(VueResource)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App , spinner}
+  components: { App , spinner,}
+
 });

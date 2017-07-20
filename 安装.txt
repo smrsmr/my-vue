@@ -13,3 +13,6 @@ $ cnpm run dev
 $ cnpm install vue-awesome-swiper --save
 #安装jquery
 $ cnpm install jquery -D
+
+# 安装vue-resource 进行跨域
+$ cnpm install vue-resource
