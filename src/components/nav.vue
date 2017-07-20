@@ -4,7 +4,7 @@
       <router-link to="/"> <div class="nav-logo"></div></router-link>
       <div class="nav-search">
           <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-            <input type="text" class="form-control"  placeholder=" 电影、影人、影院" v-model="query" @click="clearText" @keyup.enter="serch()">
+            <input type="text" class="form-control"  placeholder=" 电影、影人、影院" v-model="query" @click="aa">
           </div>
           <div class="nav-submit" @click="serch">
             <input type="button" class="btn btn-default" value="">
@@ -37,10 +37,10 @@
     },
     methods: {
       serch: function () {
-        this.$router.push({path: '/serchResult', query:{ name: this.query }})
+        this.$router.push({path: '/serchResult', query: {name: this.query}})
         this.query = ''
       },
-      clearText: function () {
+      aa: function () {
         this.$router.push({path: '/'})
       }
     }
