@@ -10,6 +10,7 @@
          </div>
          <div class="fever-title">
            <h3 class="pull-left"> <a>{{item.title}}</a></h3>
+           <h5 class="pull-left">时间：{{item.year}}</h5>
            <h5 class="pull-left">评分：{{item.rating.average}}分</h5>
            <star :score="item.rating.average" class="pull-left clear"></star>
            <h5 class="pull-left">导演：{{item.directors[0].name}}</h5>
@@ -65,7 +66,6 @@
     box-sizing: border-box;
     cursor: pointer;
     font-size: 0;
-    margin-top: 60px;
    }
   .fever-d-img {
     display: flex;

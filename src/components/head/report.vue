@@ -10,10 +10,11 @@
           </div>
           <div class="fever-title">
             <h3 class="pull-left"><a>{{item.subject.title}}</a> </h3>
+            <h5 class="pull-left">时间：{{item.subject.year}}</h5>
             <h5 class="pull-left">评分：{{item.subject.rating.average}}分</h5>
             <star :score="item.subject.rating.average" class="pull-left clear"></star>
             <h5 class="pull-left">导演：{{item.subject.directors[0].name}}</h5>
-            <h5 class="pull-left">主演：{{item.subject.casts[0].name}} / {{item.subject.casts[1].name}} / {{item.subject.casts[2].name}}</h5>
+            <h5 class="pull-left">主演：{{item.subject.casts[0].name}}</h5>
           </div>
         </div>
       </div>
@@ -42,6 +43,7 @@
       let url = "https://api.douban.com/v2/movie/us_box?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=30";
       this.$http.jsonp(url)
         .then(function (res) {
+          console.log(res.data)
           this.bool = false;
           _this.msg = res.data.subjects;
           _this.newdate = res.data.date;
@@ -88,6 +90,12 @@
   .fever-title a:hover {
     text-decoration: none;
     background-color: deepskyblue;
+  }
+  @media (max-width: 768px) {
+    .fever-title h3 {
+      margin-left: -132px;
+      margin-bottom: 40px;
+    }
   }
 </style>
 

@@ -10,6 +10,7 @@
           </div>
           <div class="fever-title">
             <h3 class="pull-left"><a>{{item.subject.title}}</a> </h3>
+            <h5 class="pull-left">时间：{{item.subject.year}}</h5>
             <h5 class="pull-left">导演：{{item.subject.directors[0].name}}</h5>
             <h5 class="pull-left">评分：{{item.subject.rating.average}}分</h5>
             <star :score="item.subject.rating.average" class="pull-left clear"></star>
@@ -38,9 +39,10 @@
     },
     created: function () {
       var _this = this
-      let url = "https://api.douban.com/v2/movie/weekly?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=10";
+      let url = "https://api.douban.com/v2/movie/weekly?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=20";
       this.$http.jsonp(url)
         .then(function (res) {
+          console.log(res.data)
           this.bool = false;
           _this.msg = res.data.subjects
         })

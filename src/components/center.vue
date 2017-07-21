@@ -144,7 +144,6 @@
   .center-large-ul-a img {
     width: 100px;
     height: 142px;
-    /*margin-bottom: 18px;*/
   }
   @media (max-width: 667px) {
     .center-img-a img {
