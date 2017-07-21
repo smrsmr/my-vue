@@ -14,8 +14,6 @@
         </swiper-slide>
           <!-- 这是轮播的小圆点 -->
           <div class="swiper-pagination" slot="pagination"></div>
-          <div class="swiper-button-prev" slot="button-prev"></div>
-          <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
         <div class="center-large">
           <div class="center-large-ul">
@@ -47,12 +45,10 @@
       return {
         msg: '',
         swiperOption: {
-          prevButton:'.swiper-button-prev',
-          nextButton:'.swiper-button-next',
           slidesPerView: 4,
           spaceBetween: 40,
           loop: true,
-          autoplay: 5000,
+          autoplay: 3000,
           autoplayDisableOnInteraction: false,
           pagination: '.swiper-pagination',
           paginationType: 'fraction',
@@ -149,5 +145,10 @@
     width: 100px;
     height: 142px;
     /*margin-bottom: 18px;*/
+  }
+  @media (max-width: 667px) {
+    .center-img-a img {
+      width: 350px;
+    }
   }
 </style>

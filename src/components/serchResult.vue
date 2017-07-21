@@ -124,7 +124,7 @@
     border-bottom: 1px solid #d6d6d6;
   }
   .res-movieMsg {
-    padding-left: 60px;
+    padding-left: 41px;
     vertical-align: top;
   }
   .res-movieMsg h2 {

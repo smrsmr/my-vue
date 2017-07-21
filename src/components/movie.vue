@@ -227,7 +227,7 @@
 
   }
   .res-movieMsg {
-    padding-left: 60px;
+    padding-left: 48px;
     vertical-align: top;
   }
   .res-movieMsg h2 {
