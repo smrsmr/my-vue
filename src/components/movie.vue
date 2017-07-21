@@ -184,7 +184,6 @@
         let url = "https://api.douban.com/v2/movie/subject/"+this.$route.params.id +'?apikey=0b2bdeda43b5688921839c8ecb20399b&city="广州"';
         this.$http.jsonp(url)
           .then(function (res) {
-            console.log(res.data)
             this.bool = false;
             _this.search_result = res.data
           })
@@ -192,6 +191,10 @@
             console.log(res)
           })
       }
+    },
+    activated: function () {
+      this.bool = true;
+      this.movie()
     }
   }
 </script>

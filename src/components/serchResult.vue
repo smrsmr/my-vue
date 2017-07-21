@@ -70,6 +70,9 @@
     created: function () {
       this.movice()
     },
+    watch: {
+        val: 'movice'
+    },
     methods: {
       serch: function (str) {
         const path = '/movie/' + str
@@ -81,7 +84,6 @@
         let url = "https://api.douban.com/v2/movie/search?q="+this.val;
         this.$http.jsonp(url)
           .then(function (res) {
-            console.log(res.data)
             this.bool = false;
             _this.guodu = false;
             _this.search_result = res.data
@@ -90,6 +92,10 @@
             console.log(res)
           })
       }
+    },
+    activated: function () {
+      this.bool = true;
+      this.movice()
     }
   }
 </script>

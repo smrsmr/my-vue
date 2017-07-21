@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <HtmlNav></HtmlNav>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
   import HtmlCenter from './components/center'
-  import HtmlFooter from './components/footer'
   import HtmlNav from './components/nav'
   export default {
     name: 'app',
     components: {
       HtmlCenter,
-      HtmlFooter,
       HtmlNav
     },
     created: function () {

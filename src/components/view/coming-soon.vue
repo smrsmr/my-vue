@@ -41,7 +41,6 @@
       let url = "https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=30";
       this.$http.jsonp(url)
         .then(function (res) {
-          console.log(res.data)
           this.bool = false;
           _this.msg = res.data.subjects
         })

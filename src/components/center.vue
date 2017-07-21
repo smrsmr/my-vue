@@ -10,8 +10,8 @@
         <swiper :options="swiperOption" >
           <!-- 这部分放你要渲染的那些内容 -->
           <swiper-slide v-for="item in msg" >
-            <a  class="center-img-a" @click="serch(item.id)"><img v-bind:src="item.images.large" :alt="item.alt"></a>
-          </swiper-slide>
+          <a  class="center-img-a" @click="serch(item.id)"><img v-bind:src="item.images.large" :alt="item.alt"></a>
+        </swiper-slide>
           <!-- 这是轮播的小圆点 -->
           <div class="swiper-pagination" slot="pagination"></div>
           <div class="swiper-button-prev" slot="button-prev"></div>
@@ -22,7 +22,7 @@
             <ul>
               <li v-for="item in msg" @click="serch(item.id)">
                 <a  class="center-large-ul-a"><img v-bind:src="item.images.medium" :alt="item.alt"></a>
-                <span class="center-large-sp">{{item.title}}</span>
+                <p class="center-large-sp">{{item.title}}</p>
               </li>
             </ul>
           </div>
@@ -49,35 +49,56 @@
         swiperOption: {
           prevButton:'.swiper-button-prev',
           nextButton:'.swiper-button-next',
-          slidesPerView: 3,
-          spaceBetween: 0,
+          slidesPerView: 4,
+          spaceBetween: 40,
           loop: true,
           autoplay: 5000,
           autoplayDisableOnInteraction: false,
           pagination: '.swiper-pagination',
-          paginationType: 'fraction'
+          paginationType: 'fraction',
+          mousewheelControl: true,    /*鼠标控制*/
+          keyboardControl: true,      /*键盘控制*/
+          breakpoints: {
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 40
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 30
+            },
+            667: {
+              slidesPerView: 1,
+              spaceBetween: 20
+            }
+          }
         },
         bool: true
       }
     },
     created: function () {
-      var _this = this;
-      let url = "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=9";
-      this.$http.jsonp(url)
-        .then(function (res) {
-          console.log(res.data)
-          this.bool = false;
-          _this.msg = res.data.subjects
-        })
-        .catch(function (res) {
-          console.log(res)
-        })
+      this.swiper();
     },
     methods: {
       serch: function (str) {
         const path = '/movie/' + str
         this.$router.push({path: path})
+      },
+      swiper: function () {
+        var _this = this;
+        let url = "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=9";
+        this.$http.jsonp(url)
+          .then(function (res) {
+            this.bool = false;
+            _this.msg = res.data.subjects
+          })
+          .catch(function (res) {
+            console.log(res)
+          })
       }
+    },
+    activated: function () {
+      this.swiper()
     }
 
   }
@@ -111,7 +132,7 @@
     cursor: pointer;
   }
   .center-img-a img {
-    width: 300px;
+    width: 280px;
     height: 425px;
   }
   .center-large-ul ul {
@@ -121,9 +142,8 @@
     align-items: center;
   }
   .center-large-sp {
-
-    display: flex;
     flex-flow: wrap;
+    align-items: center;
   }
   .center-large-ul-a img {
     width: 100px;
