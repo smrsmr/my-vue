@@ -140,6 +140,10 @@
   .center-large-sp {
     flex-flow: wrap;
     align-items: center;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    width: 100px;
   }
   .center-large-ul-a img {
     width: 100px;
