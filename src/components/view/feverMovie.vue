@@ -2,7 +2,7 @@
  <div id="app" class="container">
    <spinner v-if="bool"></spinner>
    <div v-if="!bool">
-     <h2>电影票-广州</h2>
+     <h2>正在上映的电影</h2>
      <div class="fever-d">
        <div class="fever-d-img" v-for="item in msg" @click="serch(item.id)">
          <div class="fever-img">

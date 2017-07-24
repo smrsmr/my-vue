@@ -14,6 +14,8 @@
         </swiper-slide>
           <!-- 这是轮播的小圆点 -->
           <div class="swiper-pagination" slot="pagination"></div>
+          <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
+          <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
         </swiper>
         <div class="center-large">
           <div class="center-large-ul">
@@ -49,11 +51,12 @@
           spaceBetween: 40,
           loop: true,
           autoplay: 3000,
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev',
           autoplayDisableOnInteraction: false,
           pagination: '.swiper-pagination',
           paginationType: 'fraction',
           mousewheelControl: true,    /*鼠标控制*/
-          keyboardControl: true,      /*键盘控制*/
           breakpoints: {
             1024: {
               slidesPerView: 4,
@@ -82,7 +85,7 @@
       },
       swiper: function () {
         var _this = this;
-        let url = "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=9";
+        let url = "https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=9";
         this.$http.jsonp(url)
           .then(function (res) {
             this.bool = false;
@@ -103,6 +106,12 @@
 <style scoped>
   #app {
     margin-top: 2%;
+  }
+  .swiper-button-prev:hover {
+    background-color: rgba(0,0,0,.5);
+  }
+  .swiper-button-next:hover {
+    background-color: rgba(0,0,0,.5);
   }
   .center-head span a:hover {
     text-decoration: none;

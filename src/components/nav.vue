@@ -15,7 +15,7 @@
     <div class="container nav-ul">
       <div class="nav-movie">
         <ul>
-          <li><router-link to="/feverMovie">影讯&购票</router-link> </li>
+          <li><router-link to="/feverMovie">影讯</router-link> </li>
           <li><router-link to="/rankingList">排行榜</router-link> </li>
           <li><router-link to="/publicPraise">口碑榜</router-link> </li>
           <li><router-link to="/Crunchies">Top 250</router-link> </li>

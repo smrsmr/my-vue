@@ -23,11 +23,11 @@
         <div>{{search_result.reviews_count}}人看过</div>
       </section>
       <div class="movie-summary">
-        <h4 class="pull-left h4">{{search_result.original_title}}的剧情简介 · · · · · ·</h4>
+        <h4 class="pull-left h4">{{search_result.title}}-剧情简介 · · · · · ·</h4>
         <p class="pull-left clear">{{search_result.summary}}</p>
       </div>
 
-      <h4 class="pull-left h4">{{search_result.original_title}}的影人 · · · · · ·</h4>
+      <h4 class="pull-left h4">{{search_result.title}}-影人 · · · · · ·</h4>
       <div class="movie-casta  pull-left clear">
         <div v-for="item in search_result.directors">
           <div>
@@ -184,6 +184,7 @@
         let url = "https://api.douban.com/v2/movie/subject/"+this.$route.params.id +'?apikey=0b2bdeda43b5688921839c8ecb20399b&city="广州"';
         this.$http.jsonp(url)
           .then(function (res) {
+            console.log(res.data);
             this.bool = false;
             _this.search_result = res.data
           })
