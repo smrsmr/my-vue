@@ -7,10 +7,13 @@ import router from './router'
 import spinner from './components/spinner/spinner'
 import '../static/css/reset'
 import '../static/css/bootstrap'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
 import $ from 'jquery'
 import '../static/js/bootstrap'
 Vue.config.productionTip = false;
 Vue.use(VueAwesomeSwiper);
+Vue.use(ElementUI);
 
 import VueResource from 'vue-resource';
 Vue.prototype.router = router;

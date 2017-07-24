@@ -20,6 +20,7 @@
           <li><router-link to="/publicPraise">口碑榜</router-link> </li>
           <li><router-link to="/Crunchies">Top 250</router-link> </li>
           <li><router-link to="/report">北美票房榜</router-link> </li>
+          <li><router-link to="/demo">demo</router-link> </li>
         </ul>
       </div>
     </div>

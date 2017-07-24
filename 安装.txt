@@ -16,3 +16,6 @@ $ cnpm install jquery -D
 
 # 安装vue-resource 进行跨域
 $ cnpm install vue-resource
+
+# 安装element-ui
+$ cnpm i element-ui -S
