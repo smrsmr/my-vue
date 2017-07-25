@@ -70,16 +70,22 @@
     created: function () {
       this.movice()
     },
+    mounted () {
+      this.val = this.$route.query.name;
+    },
     watch: {
-        val: 'movice'
+      '$route': 'loadAgain'
     },
     methods: {
       serch: function (str) {
         const path = '/movie/' + str
         this.$router.push({path: path})
       },
-      movice: function () {
+      loadAgain () {
         this.val = this.$route.query.name;
+        this.movice();
+      },
+      movice: function () {
         var _this = this;
         let url = "https://api.douban.com/v2/movie/search?q="+this.val;
         this.$http.jsonp(url)

@@ -14,8 +14,8 @@
         </swiper-slide>
           <!-- 这是轮播的小圆点 -->
           <div class="swiper-pagination" slot="pagination"></div>
-          <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
-          <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
+          <div class="swiper-button-prev swiper-button-white hidden-xs" slot="button-prev"></div>
+          <div class="swiper-button-next swiper-button-white hidden-xs" slot="button-next"></div>
         </swiper>
         <div class="center-large">
           <div class="center-large-ul">

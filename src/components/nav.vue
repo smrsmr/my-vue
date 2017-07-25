@@ -3,8 +3,8 @@
     <nav class="container">
       <router-link to="/"> <div class="nav-logo"></div></router-link>
       <div class="nav-search">
-          <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-            <input type="text" class="form-control"  placeholder=" 电影、影人、影院" v-model="query" @click="aa">
+          <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-11" >
+            <input type="text" class="form-control"  placeholder=" 电影、影人、影院" v-model="query" @keyup.enter="serch()">
           </div>
           <div class="nav-submit" @click="serch">
             <input type="button" class="btn btn-default" value="">
@@ -20,7 +20,6 @@
           <li><router-link to="/publicPraise">口碑榜</router-link> </li>
           <li><router-link to="/Crunchies">Top 250</router-link> </li>
           <li><router-link to="/report">北美票房榜</router-link> </li>
-          <li><router-link to="/demo">demo</router-link> </li>
         </ul>
       </div>
     </div>
@@ -40,9 +39,6 @@
       serch: function () {
         this.$router.push({path: '/serchResult', query: {name: this.query}})
         this.query = ''
-      },
-      aa: function () {
-        this.$router.push({path: '/'})
       }
     }
   }
@@ -95,5 +91,4 @@
     background-color: deepskyblue;
   }
 </style>
-
 

@@ -7,7 +7,6 @@ import Crunchies from '@/components/head/Crunchies'
 import report from '@/components/head/report'
 import feverMovie from '@/components/view/feverMovie'
 import serchResult from '@/components/serchResult'
-import demo from '@/components/demo'
 import movie from '@/components/movie'
 import coming from '@/components/view/coming-soon'
 Vue.use(Router)
@@ -59,11 +58,6 @@ export default new Router({
       path: '/movie/:id',
       name: 'movie',
       component: movie
-    },
-    {
-      path: '/demo',
-      name: 'demo',
-      component: demo
     }
   ]
 })
