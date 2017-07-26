@@ -1,7 +1,6 @@
 <template>
   <div class="spinner">
-    <h4>加载中。。。。。。</h4>
-    <h6>(如果等待时间过长，请重新刷新页面)</h6>
+    <h5>正在拉取数据。。。。</h5>
     <div class="rect1"></div>
     <div class="rect2"></div>
     <div class="rect3"></div>
@@ -12,11 +11,11 @@
 
 <script>
   export default {
-      data () {
-          return {
-              num: 0
-          }
-      },
+    data () {
+      return {
+        num: 0
+      }
+    },
     computed: {
 
     }
@@ -25,7 +24,7 @@
 
 <style scoped>
   .spinner {
-    margin: 200px auto;
+    margin: 0 auto;
     width: 300px;
     height: 80px;
     text-align: center;
@@ -72,8 +71,8 @@
       transform: scaleY(0.4);
       -webkit-transform: scaleY(0.4);
     }  20% {
-      transform: scaleY(1.0);
-      -webkit-transform: scaleY(1.0);
-    }
+         transform: scaleY(1.0);
+         -webkit-transform: scaleY(1.0);
+       }
   }
 </style>

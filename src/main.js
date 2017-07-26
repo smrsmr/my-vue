@@ -20,6 +20,6 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App , spinner,}
+  components: { App , spinner}
 
 });

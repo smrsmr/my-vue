@@ -19,3 +19,9 @@ $ cnpm install vue-resource
 
 # 安装element-ui
 $ cnpm i element-ui -S
+
+# 安装无线滚动 vue-infinite-scroll
+$ cnpm install vue-infinite-scroll --save
+# 安装 sass
+$ cnpm install node-sass  --save
+$ cnpm install sass-loader  --save
