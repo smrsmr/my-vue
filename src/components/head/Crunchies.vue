@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
     <spinner v-if="bool"></spinner>
     <div v-if="!bool">
       <h2>Top 250</h2>
@@ -18,38 +18,60 @@
           </div>
         </div>
       </div>
+      <newSpinner v-if="show"></newSpinner>
+      <!--<h3 v-if="abc">已经到底了</h3>-->
     </div>
+
   </div>
 </template>
 
 <script>
   import star from '../star/star'
   import spinner from '../spinner/spinner'
+  import newSpinner from '../spinner/newSpinner'
+  import InfiniteScroll from 'vue-infinite-scroll'
   export default {
     data () {
       return {
         msg: '',
-        bool: true
+        bool: true,
+        busy: false,
+        num: 20,
+        show: false,
       }
     },
     components: {
       star: star,
-      spinner: spinner
+      spinner: spinner,
+      newSpinner: newSpinner
     },
+    directives: {InfiniteScroll},
     created: function () {
-      var _this = this
-      let url = "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=30";
-      this.$http.jsonp(url)
-        .then(function (res) {
-          console.log(res.data)
-          this.bool = false;
-          _this.msg = res.data.subjects
-        })
-        .catch(function (res) {
-          console.log(res)
-        })
+      this.loadMore()
     },
     methods: {
+      loadMore () {
+        var _this = this;
+        this.busy = true;
+        this.show = true;
+        let url = "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count="+this.num;
+        this.$http.jsonp(url)
+          .then(function (res) {
+            console.log(res.data)
+            let start = res.data.subjects.length;
+            console.log(start)
+            this.bool = false;
+            _this.msg = res.data.subjects
+            if (start <= res.data.total) {
+              this.busy = false;
+              _this.num += 10;
+              _this.show = false;
+            }
+          })
+          .catch(function (res) {
+            console.log(res)
+          })
+      },
       serch: function (str) {
         const path = '/movie/' + str
         this.$router.push({path: path})
