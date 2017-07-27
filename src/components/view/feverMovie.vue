@@ -1,5 +1,5 @@
 <template>
- <div id="app" class="container">
+ <div id="app" class="container" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
    <spinner v-if="bool"></spinner>
    <div v-if="!bool">
      <h2>正在上映的电影</h2>
@@ -13,11 +13,12 @@
            <h5 class="pull-left">时间：{{item.mainland_pubdate}}</h5>
            <h5 class="pull-left">评分：{{item.rating.average}}分</h5>
            <star :score="item.rating.average" class="pull-left clear"></star>
-           <h5 class="pull-left">导演：{{item.directors[0].name}}</h5>
+           <h5 class="pull-left" v-if="item.directors[0].name">导演：{{item.directors[0].name}}</h5>
            <h5 class="pull-left">主演：{{item.casts[0].name}}</h5>
          </div>
        </div>
      </div>
+     <newSpinner v-if="show"></newSpinner>
    </div>
  </div>
 </template>
@@ -25,34 +26,52 @@
 <script>
   import star from '../star/star'
   import spinner from '../spinner/spinner'
+  import newSpinner from '../spinner/newSpinner'
+  import InfiniteScroll from 'vue-infinite-scroll'
   export default {
+    directives: {InfiniteScroll},
     data () {
       return {
         msg: '',
-        bool: true
+        bool: true,
+        num: 10,
+        busy: false,
+        show: false,
+        total: 30,
       }
     },
     components: {
       star: star,
-      spinner: spinner
+      spinner: spinner,
+      newSpinner: newSpinner
     },
     created: function () {
-      var _this = this
-      let url = "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=30";
-      this.$http.jsonp(url)
-        .then(function (res) {
-           console.log(res.data)
-          this.bool = false;
-          _this.msg = res.data.subjects;
-        })
-        .catch(function (res) {
-          console.log(res)
-        })
+        this.loadMore()
     },
     methods: {
       serch: function (str) {
         const path = './movie/' + str
         this.$router.push({path: path})
+      },
+      loadMore () {
+        var _this = this;
+        this.busy = true;
+        this.show = true;
+        let url = "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count="+this.num;
+        this.$http.jsonp(url)
+          .then(function (res) {
+            let start = res.data.subjects.length;
+            this.bool = false;
+            _this.msg = res.data.subjects;
+            if (start < _this.total) {
+              this.busy = false;
+              _this.num += 10;
+              _this.show = false;
+            }
+          })
+          .catch(function (res) {
+            console.log(res)
+          })
       }
     }
   }

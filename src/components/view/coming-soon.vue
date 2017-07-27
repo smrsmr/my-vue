@@ -1,5 +1,5 @@
 <template>
- <div id="app" class="container">
+ <div id="app" class="container" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
    <spinner v-if="bool"></spinner>
    <div v-if="!bool">
      <h2>即将上映的电影</h2>
@@ -13,11 +13,12 @@
            <h5 class="pull-left">时间：{{item.year}}</h5>
            <h5 class="pull-left">评分：{{item.rating.average}}分</h5>
            <star :score="item.rating.average" class="pull-left clear"></star>
-           <h5 class="pull-left">导演：{{item.directors[0].name}}</h5>
+           <h5 class="pull-left">时长：{{item.durations[0]}}</h5>
            <h5 class="pull-left">剧情：{{item.genres[1]}} {{item.genres[2]}}</h5>
          </div>
        </div>
      </div>
+     <newSpinner v-if="show"></newSpinner>
    </div>
  </div>
 </template>
@@ -25,30 +26,49 @@
 <script>
   import star from '../star/star'
   import spinner from '../spinner/spinner'
+  import InfiniteScroll from 'vue-infinite-scroll'
+  import newSpinner from '../spinner/newSpinner'
   export default {
+    directives: {InfiniteScroll},
     data () {
       return {
         msg: '',
         bool: true,
+        busy: false,
+        show: false,
+        num: 10,
+
       }
     },
     components: {
       star: star,
-      spinner: spinner
+      spinner: spinner,
+      newSpinner: newSpinner
     },
     created: function () {
-      var _this = this
-      let url = "https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count=30";
-      this.$http.jsonp(url)
-        .then(function (res) {
-          this.bool = false;
-          _this.msg = res.data.subjects
-        })
-        .catch(function (res) {
-          console.log(res)
-        })
+      this.loadMore()
     },
     methods: {
+      loadMore () {
+        var _this = this;
+        this.busy = true;
+        this.show = true;
+        let url = "https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count="+this.num;
+        this.$http.jsonp(url)
+          .then(function (res) {
+            let start = res.data.subjects.length;
+            this.bool = false;
+            _this.msg = res.data.subjects
+            if (start < res.data.total) {
+              this.busy = false;
+              _this.num += 15;
+              _this.show = false;
+            }
+          })
+          .catch(function (res) {
+            console.log(res)
+          })
+      },
       serch: function (str) {
         const path = './movie/' + str
         this.$router.push({path: path})

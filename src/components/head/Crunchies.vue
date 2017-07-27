@@ -57,15 +57,13 @@
         let url = "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count="+this.num;
         this.$http.jsonp(url)
           .then(function (res) {
-            console.log(res.data)
             let start = res.data.subjects.length;
-            console.log(start)
             this.bool = false;
             _this.msg = res.data.subjects
             if (start <= res.data.total) {
-              this.busy = false;
-              _this.num += 10;
-              _this.show = false;
+                this.busy = false;
+                _this.num += 10;
+                _this.show = false;
             }
           })
           .catch(function (res) {
