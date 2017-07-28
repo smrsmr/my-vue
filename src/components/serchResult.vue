@@ -1,5 +1,5 @@
 <template>
-  <div class="result">
+  <div class="result" >
     <spinner v-if='bool'></spinner>
     <div v-if="!bool">
       <h2 v-if='!guodu' class="search-title">'{{val}}'的搜索结果, 共{{search_result.total}}条信息</h2>
@@ -28,6 +28,7 @@
 <script>
   import star from './star/star'
   import spinner from './spinner/spinner'
+
   export default {
     data () {
       return {

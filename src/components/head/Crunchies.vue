@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <newSpinner v-if="show"></newSpinner>
+      <sp :show="show"></sp>
       <!--<h3 v-if="abc">已经到底了</h3>-->
     </div>
 
@@ -28,7 +28,7 @@
 <script>
   import star from '../star/star'
   import spinner from '../spinner/spinner'
-  import newSpinner from '../spinner/newSpinner'
+  import sp from '../spinner/sp'
   import InfiniteScroll from 'vue-infinite-scroll'
   export default {
     data () {
@@ -36,14 +36,14 @@
         msg: '',
         bool: true,
         busy: false,
-        num: 20,
+        num: 10,
         show: false,
       }
     },
     components: {
       star: star,
       spinner: spinner,
-      newSpinner: newSpinner
+      sp: sp
     },
     directives: {InfiniteScroll},
     created: function () {

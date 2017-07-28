@@ -18,7 +18,7 @@
          </div>
        </div>
      </div>
-     <newSpinner v-if="show"></newSpinner>
+     <sp :show="show"></sp>
    </div>
  </div>
 </template>
@@ -26,7 +26,7 @@
 <script>
   import star from '../star/star'
   import spinner from '../spinner/spinner'
-  import newSpinner from '../spinner/newSpinner'
+  import sp from '../spinner/sp'
   import InfiniteScroll from 'vue-infinite-scroll'
   export default {
     directives: {InfiniteScroll},
@@ -43,7 +43,7 @@
     components: {
       star: star,
       spinner: spinner,
-      newSpinner: newSpinner
+      sp: sp
     },
     created: function () {
         this.loadMore()
