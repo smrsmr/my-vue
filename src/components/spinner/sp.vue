@@ -12,7 +12,7 @@
   }
 </script>
 
-<style lang="scss" scopeds>
+<style lang="scss" scoped>
   $offset: 126;
   $duration: 1.4s;
   .spinner {
