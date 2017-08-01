@@ -60,7 +60,7 @@
     margin-top: 2%;
     background: url("../../static/images/nav-logo.png") no-repeat;
     width: 115px;
-    height: 27px;
+    height: 38px;
     flex: 4;
   }
   .nav-search {
