@@ -19,7 +19,7 @@
         </div>
       </div>
       <sp :show="show"></sp>
-      <!--<h3 v-if="abc">已经到底了</h3>-->
+      <h4 v-show="abc">已经到底了</h4>
     </div>
 
   </div>
@@ -38,6 +38,9 @@
         busy: false,
         num: 10,
         show: false,
+        total: 100,
+        start: '',
+        abc: false
       }
     },
     components: {
@@ -57,14 +60,20 @@
         let url = "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city='广州'&count="+this.num;
         this.$http.jsonp(url)
           .then(function (res) {
-            let start = res.data.subjects.length;
             this.bool = false;
             _this.msg = res.data.subjects
-            if (start <= res.data.total) {
-                this.busy = false;
-                _this.num += 10;
-                _this.show = false;
+            _this.start = res.data.subjects.length;
+            if (_this.start < _this.total) {
+                this.busy = false
+                _this.num += 10
+                _this.show = false
+            } else {
+              _this.show = false
+              _this.abc = true
             }
+//            if (_this.start === _this.total) {
+//              this.abc = true
+//            }
           })
           .catch(function (res) {
             console.log(res)
@@ -107,6 +116,9 @@
   .fever-title a:hover {
     text-decoration: none;
     background-color: deepskyblue;
+  }
+  h4 {
+    color: #ccc;
   }
 </style>
 
